@@ -1,32 +1,50 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { inner, main, outer } from '../assets';
-import { motion, spring } from 'framer-motion'
-
-
-const list = { hidden: { opacity: 0 } }
-const item = { hidden: { x: -10, opacity: 0 } }
-
+import { motion } from 'framer-motion'
+import Typewriter from 'typewriter-effect';
 
 export default function Services() {
+    const [value, setValue] = useState('')
+
+    const changeValueHandler = (e) => {
+        setValue(e.target.innerHTML);
+    }
+    useEffect(() => {
+        setValue('Brand Strategy')
+    }, [])
     return (
-        <section className=' w-full bg-bg overflow-hidden min-h-screen'>
+        <section className=' w-fulloverflow-hidden min-h-screen bg-bg '>
             <div className='flex items-center justify-center max-w-screen-2xl mx-auto flex-col select-none gap-10 p-2 text-center'>
-                <motion.h1
-                    initial={{
-                        opacity: 0,
-                        x: '-150px',
+                <motion.div
+                    className='flex items-center justify-end w-full  mt-20 origin-left'>
 
-                    }}
-                    animate={{
-                        opacity: 1,
-                        x: 0
-                    }}
-                    transition={{
-                        duration: 0.5,
-                        delay: 0.5
-                    }}
-                    className='text-primary text-3xl flex items-center justify-end  w-full mt-20'>"We create Experiences with Measurable Impact"</motion.h1>
+                    <motion.h1
+                        initial={{
+                            opacity: 0,
+                            scaleX: 0,
 
+
+                        }}
+                        animate={{
+                            opacity: 1,
+                            scaleX: 1
+
+                        }}
+                        transition={{
+                            duration: 0.5,
+                            delay: 3
+                        }}
+                        className='  text-5xl   origin-right text-primary'>
+                        <Typewriter
+                            onInit={(typewriter) => {
+                                typewriter
+                                    .pauseFor(3000)
+                                    .typeString('We Create Experiences with measurable impact')
+                                    .start();
+                            }}
+                        /></motion.h1>
+
+                </motion.div>
 
                 <article className='flex flex-col-reverse items-center  w-full z-20 lg:flex-row'>
 
@@ -48,7 +66,7 @@ export default function Services() {
                                 type: 'spring', stiffness: 100
                             }}
 
-                            src={outer} alt="" className='absolute top-0 left-0   outer' />
+                            src={outer} alt="" className='absolute top-0 left-0 outer' />
                         <motion.img
                             initial={{
                                 opacity: 0,
@@ -86,16 +104,23 @@ export default function Services() {
 
                     </div>
                     {/* FOR CONTENT */}
-                    <ul className='text-white   w-full  lg:flex-1 z-20 p-2'>
-                        <li className='list-items'>Brand Strategy</li>
-                        <li className='list-items'>Design</li>
-                        <li className='list-items'>Digital</li>
-                        <li className='list-items'>Events</li>
-                        <li className='list-items'>Exhibitions</li>
-                        <li className='list-items'>Interior & Retail</li>
-                        <li className='list-items'>World Expo</li>
+                    <motion.ul
 
-                    </ul>
+                        className='text-white   w-full  lg:flex-1 z-20 p-2 relative list rounded-2xl'>
+                        <li className='list-items' onMouseEnter={changeValueHandler}>Brand Strategy</li>
+                        <li className='list-items' onMouseEnter={changeValueHandler}>Design</li>
+                        <li className='list-items' onMouseEnter={changeValueHandler}>Digital</li>
+                        <li className='list-items' onMouseEnter={changeValueHandler}>Events</li>
+                        <li className='list-items' onMouseEnter={changeValueHandler}>Exhibitions</li>
+                        <li className='list-items' onMouseEnter={changeValueHandler}>Interior and Retail</li>
+                        <li className='list-items' onMouseEnter={changeValueHandler}>World Expo</li>
+                        <div alt="" className='absolute top-0 left-0  w-full h-full rounded-2xl hoverBG' >
+                            <h1 className='text-primary'>
+                                {value}
+                            </h1>
+                        </div>
+
+                    </motion.ul>
                     <div>
 
                     </div>
