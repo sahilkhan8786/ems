@@ -5,7 +5,7 @@
 .list-items {
   animation: start 0.5s linear forwards;
   animation-delay: 2s;
-  @apply flex justify-center lg:justify-end pb-2 pt-3 relative hover:scale-110 transition-all opacity-0
+  @apply flex justify-center lg:justify-end pb-2 pt-3 relative hover:scale-110 transition-all opacity-0 text-2xl font-bold z-50
 }
 
 .list-items::after {
@@ -76,4 +76,22 @@
   100% {
     rotate: 0deg;
   }
+}
+
+.hoverBG {
+  stroke: 2px;
+  @apply flex items-center justify-center text-5xl font-bold md:text-8xl
+}
+
+
+.list {
+  box-shadow: 2px 2px 15px #000;
+
+}
+
+.hoverBG h1 {
+  transform: rotateZ(-15deg);
+  animation: start 0.5s linear forwards;
+  animation-delay: 2s;
+  opacity: 0;
 }
