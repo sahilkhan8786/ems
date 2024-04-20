@@ -8,7 +8,8 @@ export default {
     extend: {
       colors: {
         bg: '#050604',
-        primary: '#6FC887'
+        primary: '#6FC887',
+        box_bg: '#053a34'
       }
     },
   },
